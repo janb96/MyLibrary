@@ -4,8 +4,10 @@ let books = require('./../model/book.js');
 const ISBN = require('isbn').ISBN;
 
 router.get('/', async function(req, res, next) {
+
   	let response = await books.findAll();
   	res.send(response);
+  	
 });
 
 router.post('/', async function(req, res, next) {
@@ -34,16 +36,17 @@ router.post('/', async function(req, res, next) {
 });
 
 router.delete('/', async function(req, res, next) {
-	const bookID = req.body.bookID;
 
-	let response = await books.destroy({
+	const bookID = req.body.bookID;
+	books.destroy({
 			where: {
 				bookID: bookID
 			}
 		}
-	);
+	).then( response => {
+		res.send(response.toString())
+	});
 
-	res.send(response);
 });
 
 
