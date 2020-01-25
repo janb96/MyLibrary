@@ -11,7 +11,10 @@ let Book = sequelize.define('Book', {
     },
     bookName: Sequelize.STRING,
     bookAuthor: Sequelize.STRING,
-    bookISBN: Sequelize.STRING
+    bookISBN: Sequelize.STRING,
+    bookURL: Sequelize.STRING,
+    releaseDate: Sequelize.DATEONLY,
+    dateOfEntry: Sequelize.DATEONLY
 });
 
 module.exports = Book;
