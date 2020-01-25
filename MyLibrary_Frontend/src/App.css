@@ -1,0 +1,50 @@
+a:link {
+  color: black;
+}
+
+a:visited {
+  color: black;
+}
+
+a:hover {
+  color: sandybrown;
+  text-decoration: none;
+}
+
+a:active {
+  color: sandybrown;
+  text-decoration: none;
+}
+
+a.white-link {
+  color: white
+}
+
+a.white-link:visited {
+  color: white
+}
+
+a.white-link:hover {
+  color: sandybrown;
+  text-decoration: none;
+}
+
+a.white-link:active {
+  color: sandybrown;
+  text-decoration: none;
+}
+
+.hover01 figure img {
+  -webkit-transform: scale(1);
+  transform: scale(1);
+  -webkit-transition: .3s ease-in-out;
+  transition: .3s ease-in-out;
+}
+.hover01 figure:hover img {
+  -webkit-transform: scale(1.05);
+  transform: scale(1.05);
+}
+
+hr {
+  border-color: white;
+}
