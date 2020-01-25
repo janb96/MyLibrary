@@ -4,11 +4,10 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 const cors = require('cors');
-const Sequelize = require('sequelize');
-const Op = Sequelize.Op;
 
 const indexRouter = require('./routes/index');
 const bookRouter = require('./routes/book');
+const movieRouter = require('./routes/movie');
 
 var app = express();
 app.use(cors());
@@ -26,6 +25,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 app.use('/books', bookRouter);
+app.use('/movies', movieRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
