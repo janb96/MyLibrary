@@ -2,7 +2,7 @@ var sequelize = require('../connect.js');
 var Sequelize = require('sequelize');
 sequelize.sync();
 
-let Movie = sequelize.define('Book', {
+let Movie = sequelize.define('Movie', {
 
     movieID: {
         type: Sequelize.INTEGER,
