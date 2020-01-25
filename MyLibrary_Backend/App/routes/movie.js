@@ -69,9 +69,9 @@ router.put('/', async function(req, res, next) {
 
 });
 
-router.delete('/', async function(req, res, next) {
+router.delete('/:movieID', async function(req, res, next) {
 
-    const movieID = req.body.movieID;
+    const movieID = req.params.movieID;
 
     movies.destroy({
             where: {

@@ -5,6 +5,7 @@ const ISBN = require('isbn').ISBN;
 
 router.get('/', async function(req, res, next) {
 
+	console.log("test");
   	let response = await books.findAll();
   	res.send(response);
 
@@ -71,9 +72,9 @@ router.put('/', async function(req, res, next) {
 
 });
 
-router.delete('/', async function(req, res, next) {
+router.delete('/:bookID', async function(req, res, next) {
 
-	const bookID = req.body.bookID;
+	const bookID = req.params.bookID;
 	books.destroy({
 			where: {
 				bookID: bookID
