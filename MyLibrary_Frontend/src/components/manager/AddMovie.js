@@ -36,7 +36,7 @@ class AddMovie extends Component {
         axios.post("http://localhost:4000/movies", postData).then( response =>
             {
                 console.log(response);
-                if(response.data == "Date is incorrect") {
+                if(response.data === "Date is incorrect") {
                     swal("Error!", "Date is incorrect ;(", "error");
                 } else {
                     swal("Success!", "New movie was added to database ;)", "success").then( () =>

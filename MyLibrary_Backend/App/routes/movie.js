@@ -1,5 +1,6 @@
 var express = require('express');
 var router = express.Router();
+var moment = require('moment');
 const movies = require('./../model/movie.js');
 
 router.get('/', async function(req, res, next) {
@@ -19,20 +20,24 @@ router.post('/', async function(req, res, next) {
     const movieURL = req.body.movieURL;
     const releaseDate = req.body.releaseDate;
 
-    const movie = {
-        movieName: movieName,
-        description: description,
-        durationHours: durationHours,
-        durationMinutes: durationMinutes,
-        durationSeconds: durationSeconds,
-        movieURL: movieURL,
-        releaseDate: releaseDate,
-        dateOfEntry: new Date()
-    };
+    if(moment(releaseDate).isValid()) {
+        const movie = {
+            movieName: movieName,
+            description: description,
+            durationHours: durationHours,
+            durationMinutes: durationMinutes,
+            durationSeconds: durationSeconds,
+            movieURL: movieURL,
+            releaseDate: releaseDate,
+            dateOfEntry: new Date()
+        };
 
-    movies.create(movie).then(
-        result => res.send(result)
-    );
+        movies.create(movie).then(
+            result => res.send(result)
+        );
+    } else {
+        res.send("Date is incorrect");
+    }
 
 
 });
@@ -48,24 +53,28 @@ router.put('/', async function(req, res, next) {
     const movieURL = req.body.movieURL;
     const releaseDate = req.body.releaseDate;
 
-    const movie = {
-        movieName: movieName,
-        description: description,
-        durationHours: durationHours,
-        durationMinutes: durationMinutes,
-        durationSeconds: durationSeconds,
-        movieURL: movieURL,
-        releaseDate: releaseDate,
-    };
+    if(moment(releaseDate).isValid()) {
+        const movie = {
+            movieName: movieName,
+            description: description,
+            durationHours: durationHours,
+            durationMinutes: durationMinutes,
+            durationSeconds: durationSeconds,
+            movieURL: movieURL,
+            releaseDate: releaseDate,
+        };
 
-    movies.update(movie,
-        {
-            where: {
-                movieID: movieID
-            }
-        }).then(
-        result => res.send(result)
-    );
+        movies.update(movie,
+            {
+                where: {
+                    movieID: movieID
+                }
+            }).then(
+            result => res.send(result)
+        );
+    } else {
+        res.send("Date is incorrect");
+    }
 
 });
 

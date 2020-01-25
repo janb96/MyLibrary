@@ -56,7 +56,7 @@ class Home extends Component {
                 <br/>
                 <div className="container-fluid">
                     <div className="row text-center">
-                        <div className="col-6">
+                        <div className="col-sm-6">
                             <Link to="/movies">
                                 <div className="hover01 column">
                                     <figure>
@@ -66,7 +66,7 @@ class Home extends Component {
                                 <h2>My Movies</h2>
                             </Link>
                         </div>
-                        <div className="col-6">
+                        <div className="col-sm-6">
                             <Link to="/books">
                                 <div className="hover01 column">
                                     <figure>
