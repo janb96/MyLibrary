@@ -1,0 +1,74 @@
+import React, {Component} from 'react';
+import swal from 'sweetalert';
+import axios from 'axios';
+
+class Movie extends Component {
+
+    constructor(props) {
+        super(props);
+        this.state = {
+        };
+        this.deleteMovie = this.deleteMovie.bind(this);
+    }
+
+    async componentDidMount() {
+
+    }
+
+    async deleteMovie() {
+
+        let response = await axios.delete("http://localhost:4000/movies/" + this.props.movieID);
+
+        if(parseInt(response.data) > 0) {
+            swal("Success!", "Movie was deleted ;)", "success").then( () =>
+                window.location.reload()
+            );
+        } else {
+            swal("Error!", "Something went wrong ;(", "error").then( () =>
+                window.location.reload()
+            );
+        }
+
+    }
+
+    // key={key}
+    // movieID={movie.movieID}
+    // movieName={movie.movieName}
+    // movieURL={movie.movieURL}
+    // description={movie.description}
+    // durationHours={movie.durationHours}
+    // durationMinutes={movie.durationMinutes}
+    // durationSeconds={movie.durationSeconds}
+    // dateOfEntry={movie.dateOfEntry}
+    // releaseDate={movie.releaseDate}
+
+    render() {
+        return (
+            <div className="movie">
+                <div className="row">
+                    <div className="col-8">
+                        <h3>Title: {this.props.movieName}</h3>
+                        <p><strong>Description:</strong> {this.props.description}</p>
+                    </div>
+                    <div className="col-3">
+                        <img src={this.props.movieURL} className="img-fluid" alt={this.props.movieName}/>
+                    </div>
+                    <div className="col-1">
+                        <div onClick={this.deleteMovie}><i className="fas fa-trash-alt"></i></div>
+                    </div>
+                </div>
+                <div className="row">
+                    <div className="col-12">
+                        <p><i className="fas fa-play"></i> <strong>Duration time:</strong> {this.props.durationHours}h {this.props.durationMinutes}min {this.props.durationSeconds}sec</p>
+                        <p><i className="fas fa-check-circle"></i> <strong>Release date:</strong> {this.props.releaseDate}</p>
+                        <p><i className="fas fa-plus"></i> <strong>You added this movie:</strong> {this.props.dateOfEntry}</p>
+                    </div>
+                </div>
+                <hr/>
+            </div>
+
+        );
+    }
+}
+
+export default Movie;

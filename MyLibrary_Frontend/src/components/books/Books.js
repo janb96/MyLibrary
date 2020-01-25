@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import axios from 'axios';
 import Header from './../header/Header';
+import Book from './Book';
 
 class Books extends Component {
 
@@ -29,7 +30,22 @@ class Books extends Component {
         return (
             <div>
                 <Header/>
-                <h1>My Books</h1>
+                <div className="container-fluid">
+                    <h1><strong>My Books</strong></h1>
+                    <br/>
+                    {this.state.books != null && this.state.books.map((book, key) =>
+                        <Book
+                            key={key}
+                            bookName={book.bookName}
+                            bookID={book.bookID}
+                            bookAuthor={book.bookAuthor}
+                            bookISBN={book.bookISBN}
+                            bookURL={book.bookURL}
+                            dateOfEntry={book.dateOfEntry}
+                            releaseDate={book.releaseDate}
+                        />
+                    )}
+                </div>
             </div>
 
         );

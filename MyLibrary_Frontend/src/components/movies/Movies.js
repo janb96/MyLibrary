@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import axios from 'axios';
 import Header from './../header/Header';
-
+import Movie from './Movie';
 class Movies extends Component {
 
     constructor() {
@@ -29,7 +29,24 @@ class Movies extends Component {
         return (
             <div>
                 <Header/>
-                <h1>My Movies</h1>
+                <div className="container-fluid">
+                    <h1><strong>My Movies</strong></h1>
+                    <br/>
+                    {this.state.movies != null && this.state.movies.map((movie, key) =>
+                        <Movie
+                            key={key}
+                            movieID={movie.movieID}
+                            movieName={movie.movieName}
+                            movieURL={movie.movieURL}
+                            description={movie.description}
+                            durationHours={movie.durationHours}
+                            durationMinutes={movie.durationMinutes}
+                            durationSeconds={movie.durationSeconds}
+                            dateOfEntry={movie.dateOfEntry}
+                            releaseDate={movie.releaseDate}
+                        />
+                    )}
+                </div>
             </div>
 
         );

@@ -39,12 +39,12 @@ class Header extends Component {
                             </Link>
                         </div>
                         <div className="col-3">
-                            <Link className="white-link" to="/movies">
+                            <Link className="white-link" to="/movie-manager">
                                 <h3>Movies Manager</h3>
                             </Link>
                         </div>
                         <div className="col-3">
-                            <Link className="white-link" to="/movies">
+                            <Link className="white-link" to="/books-manager">
                                 <h3>Books Manager</h3>
                             </Link>
                         </div>
