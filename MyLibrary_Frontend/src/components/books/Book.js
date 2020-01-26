@@ -41,7 +41,7 @@ class Book extends Component {
                         <p><strong>ISBN:</strong> {this.props.bookISBN}</p>
                     </div>
                     <div className="col-3">
-                        <img src={this.props.bookURL} className="img-fluid" alt={this.props.bookName}/>
+                        <img src={this.props.bookURL} alt={this.props.bookName} height="200" width="200" />
                     </div>
                     <div className="col-1">
                         <div onClick={this.deleteBook}><i className="fas fa-trash-alt"></i></div>

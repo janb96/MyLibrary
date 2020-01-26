@@ -6,7 +6,6 @@ const ISBN = require('isbn').ISBN;
 
 router.get('/', async function(req, res, next) {
 
-	console.log("test");
   	let response = await books.findAll();
   	res.send(response);
 
@@ -23,6 +22,9 @@ router.post('/', async function(req, res, next) {
 	if(!moment(releaseDate).isValid()){
 		res.send("Date is incorrect");
 	}
+
+	console.log(req.body.bookISBN);
+	console.log(bookISBN);
 
 	if(bookISBN == null) {
 		res.send("ISBN is incorrect");

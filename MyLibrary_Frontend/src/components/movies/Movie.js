@@ -31,17 +31,6 @@ class Movie extends Component {
 
     }
 
-    // key={key}
-    // movieID={movie.movieID}
-    // movieName={movie.movieName}
-    // movieURL={movie.movieURL}
-    // description={movie.description}
-    // durationHours={movie.durationHours}
-    // durationMinutes={movie.durationMinutes}
-    // durationSeconds={movie.durationSeconds}
-    // dateOfEntry={movie.dateOfEntry}
-    // releaseDate={movie.releaseDate}
-
     render() {
         return (
             <div className="movie">
@@ -51,7 +40,7 @@ class Movie extends Component {
                         <p><strong>Description:</strong> {this.props.description}</p>
                     </div>
                     <div className="col-3">
-                        <img src={this.props.movieURL} className="img-fluid" alt={this.props.movieName}/>
+                        <img src={this.props.movieURL} alt={this.props.movieName} height="200" width="200" />
                     </div>
                     <div className="col-1">
                         <div onClick={this.deleteMovie}><i className="fas fa-trash-alt"></i></div>
