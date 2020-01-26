@@ -35,15 +35,19 @@ class Movie extends Component {
         return (
             <div className="movie">
                 <div className="row">
-                    <div className="col-8">
+                    <div className="col-10">
                         <h3>Title: {this.props.movieName}</h3>
+                    </div>
+                    <div className="col-2">
+                        <div onClick={this.deleteMovie}><i className="fas fa-trash-alt"></i></div>
+                    </div>
+                </div>
+                <div className="row">
+                    <div className="col-sm-8">
                         <p><strong>Description:</strong> {this.props.description}</p>
                     </div>
-                    <div className="col-3">
+                    <div className="col-sm-4">
                         <img src={this.props.movieURL} alt={this.props.movieName} height="200" width="200" />
-                    </div>
-                    <div className="col-1">
-                        <div onClick={this.deleteMovie}><i className="fas fa-trash-alt"></i></div>
                     </div>
                 </div>
                 <div className="row">

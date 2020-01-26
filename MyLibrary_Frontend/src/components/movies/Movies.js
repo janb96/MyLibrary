@@ -9,10 +9,14 @@ class Movies extends Component {
         this.state = {
             movies: []
         };
+        this.sortByNameAsc = this.sortByNameAsc.bind(this);
+        this.sortByNameDesc = this.sortByNameDesc.bind(this);
+        this.sortByReleaseDateAsc = this.sortByReleaseDateAsc.bind(this);
+        this.sortByReleaseDateDesc = this.sortByReleaseDateDesc.bind(this);
     }
 
-    async getMovies() {
-        const promise = await axios.get('http://localhost:4000/movies');
+    async getMovies(afterLink) {
+        const promise = await axios.get('http://localhost:4000/movies/' + afterLink);
         const response = promise.data;
         return response;
     }
@@ -20,9 +24,33 @@ class Movies extends Component {
     async componentDidMount() {
 
         this.setState({
-            movies: await this.getMovies()
+            movies: await this.getMovies("")
         });
 
+    }
+
+    async sortByNameAsc() {
+        this.setState({
+            movies: await this.getMovies("sortByNameAsc")
+        });
+    }
+
+    async sortByNameDesc() {
+        this.setState({
+            movies: await this.getMovies("sortByNameDesc")
+        });
+    }
+
+    async sortByReleaseDateAsc() {
+        this.setState({
+            movies: await this.getMovies("sortByReleaseDateAsc")
+        });
+    }
+
+    async sortByReleaseDateDesc() {
+        this.setState({
+            movies: await this.getMovies("sortByReleaseDateDesc")
+        });
     }
 
     render() {
@@ -31,6 +59,20 @@ class Movies extends Component {
                 <Header/>
                 <div className="container-fluid">
                     <h1><strong>My Movies</strong></h1>
+                    <div className="row">
+                        <div className="col-3">
+                            <button type="button" onClick={this.sortByNameDesc} className="btn btn-outline-secondary">Sort by movie title <i
+                                className="fas fa-arrow-up"></i></button></div>
+                        <div className="col-3">
+                            <button type="button" onClick={this.sortByNameAsc} className="btn btn-outline-secondary">Sort by movie title <i
+                                className="fas fa-arrow-down"></i></button></div>
+                        <div className="col-3">
+                            <button type="button" onClick={this.sortByReleaseDateDesc} className="btn btn-outline-secondary">Sort by release date <i
+                                className="fas fa-arrow-up"></i></button></div>
+                        <div className="col-3">
+                            <button type="button" onClick={this.sortByReleaseDateAsc} className="btn btn-outline-secondary">Sort by release date <i
+                                className="fas fa-arrow-down"></i></button></div>
+                    </div>
                     <br/>
                     {this.state.movies != null && this.state.movies.map((movie, key) =>
                         <Movie

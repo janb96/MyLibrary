@@ -119,7 +119,7 @@ router.get('/sortByReleaseDateAsc', async function(req, res, next) {
 
     let response = await movies.findAll({
         order: [
-            ['releaseDate', 'DESC']
+            ['releaseDate', 'ASC']
         ]
     });
     res.send(response);
