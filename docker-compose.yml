@@ -1,0 +1,15 @@
+version: '3'
+
+services:
+  mylibrary_backend:
+    build: ./mylibrary_backend
+    volumes:
+      - ./MyLibrary_Backend/App:/usr/src
+    ports:
+      - 4000:4000
+  mylibrary_frontend:
+    build: ./mylibrary_frontend
+    volumes:
+      - ./MyLibrary_Frontend:/usr/src
+    ports:
+      - 3000:3000
