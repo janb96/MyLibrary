@@ -50,6 +50,5 @@ npm start
 - Express (https://expressjs.com)
 - React (https://reactjs.org)
 - Bootstrap4 (https://getbootstrap.com)
-- Jest (https://jestjs.io)
 - Docker (https://www.docker.com)
 - SweetAlert (https://sweetalert.js.org)
