@@ -5,6 +5,7 @@ import Home from './components/home/Home';
 import Movies from './components/movies/Movies';
 import Books from './components/books/Books';
 import MovieManager from './components/manager/MovieManager';
+import BookManager from './components/manager/BookManager';
 
 import './App.css';
 class App extends Component {
@@ -17,6 +18,7 @@ class App extends Component {
                 <Route path='/books' component={Books}/>
                 <Route path='/movies' component={Movies}/>
                 <Route path='/movie-manager' component={MovieManager}/>
+                <Route path='/book-manager' component={BookManager}/>
             </Switch>
         </BrowserRouter>
     );

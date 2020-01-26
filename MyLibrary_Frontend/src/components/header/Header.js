@@ -44,7 +44,7 @@ class Header extends Component {
                             </Link>
                         </div>
                         <div className="col-3">
-                            <Link className="white-link" to="/books-manager">
+                            <Link className="white-link" to="/book-manager">
                                 <h3>B.M.</h3>
                             </Link>
                         </div>

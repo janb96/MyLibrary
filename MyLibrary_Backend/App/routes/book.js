@@ -1,5 +1,6 @@
 var express = require('express');
 var router = express.Router();
+var moment = require('moment');
 const books = require('./../model/book.js');
 const ISBN = require('isbn').ISBN;
 
@@ -18,6 +19,10 @@ router.post('/', async function(req, res, next) {
 	const bookISBN = ISBN.parse(req.body.bookISBN);
 	const bookURL = req.body.bookURL;
 	const releaseDate = req.body.releaseDate;
+
+	if(!moment(releaseDate).isValid()){
+		res.send("Date is incorrect");
+	}
 
 	if(bookISBN == null) {
 		res.send("ISBN is incorrect");
@@ -47,6 +52,12 @@ router.put('/', async function(req, res, next) {
 	const bookName = req.body.bookName;
 	const bookAuthor = req.body.bookAuthor;
 	const bookISBN = ISBN.parse(req.body.bookISBN);
+	const releaseDate = req.body.releaseDate;
+	const bookURL = req.body.bookURL;
+
+	if(!moment(releaseDate).isValid()){
+		res.send("Date is incorrect");
+	}
 
 	if(bookISBN == null) {
 		res.send("ISBN is incorrect");
@@ -54,7 +65,9 @@ router.put('/', async function(req, res, next) {
 		const book = {
 			bookName: bookName,
 			bookAuthor: bookAuthor,
-			bookISBN: bookISBN.asIsbn13()
+			bookISBN: bookISBN.asIsbn13(),
+			releaseDate: releaseDate,
+			bookURL: bookURL
 		};
 
 		books.update(book,
